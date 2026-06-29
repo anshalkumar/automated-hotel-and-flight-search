@@ -12,7 +12,15 @@ import {
   Play,
   ShieldCheck,
   Sparkles,
-  XCircle
+  XCircle,
+  MapPin,
+  Calendar,
+  Users,
+  Home,
+  Globe,
+  ChevronRight,
+  Terminal,
+  FileText
 } from "lucide-react";
 import "./styles.css";
 
@@ -165,12 +173,18 @@ function App() {
                 <div className="two-column">
                   <label>
                     Adults
-                    <input min="1" max="9" name="adults" type="number" value={form.adults} onChange={updateForm} />
+                    <div className="input-icon-wrapper">
+                      <Users className="input-icon" size={16} />
+                      <input min="1" max="9" name="adults" type="number" value={form.adults} onChange={updateForm} />
+                    </div>
                   </label>
                   {isHotels && (
                     <label>
                       Rooms
-                      <input min="1" max="8" name="rooms" type="number" value={form.rooms} onChange={updateForm} />
+                      <div className="input-icon-wrapper">
+                        <Home className="input-icon" size={16} />
+                        <input min="1" max="8" name="rooms" type="number" value={form.rooms} onChange={updateForm} />
+                      </div>
                     </label>
                   )}
                 </div>
@@ -219,27 +233,39 @@ function FlightInputs({ form, updateForm }) {
       <div className="two-column">
         <label>
           Source city or airport code
-          <input name="source" value={form.source} onChange={updateForm} placeholder="Example: Delhi or DEL" required />
+          <div className="input-icon-wrapper">
+            <MapPin className="input-icon" size={16} />
+            <input name="source" value={form.source} onChange={updateForm} placeholder="Example: Delhi or DEL" required />
+          </div>
         </label>
         <label>
           Destination city or airport code
-          <input
-            name="destination"
-            value={form.destination}
-            onChange={updateForm}
-            placeholder="Example: Mumbai or BOM"
-            required
-          />
+          <div className="input-icon-wrapper">
+            <MapPin className="input-icon" size={16} />
+            <input
+              name="destination"
+              value={form.destination}
+              onChange={updateForm}
+              placeholder="Example: Mumbai or BOM"
+              required
+            />
+          </div>
         </label>
       </div>
       <div className="two-column">
         <label>
           Departure date
-          <input name="departureDate" type="date" value={form.departureDate} onChange={updateForm} required />
+          <div className="input-icon-wrapper">
+            <Calendar className="input-icon" size={16} />
+            <input name="departureDate" type="date" value={form.departureDate} onChange={updateForm} required />
+          </div>
         </label>
         <label>
           Return date optional
-          <input name="returnDate" type="date" value={form.returnDate} onChange={updateForm} />
+          <div className="input-icon-wrapper">
+            <Calendar className="input-icon" size={16} />
+            <input name="returnDate" type="date" value={form.returnDate} onChange={updateForm} />
+          </div>
         </label>
       </div>
     </>
@@ -251,22 +277,31 @@ function HotelInputs({ form, updateForm }) {
     <>
       <label>
         Destination
-        <input
-          name="destination"
-          value={form.destination}
-          onChange={updateForm}
-          placeholder="Example: Goa, Jaipur, Bengaluru"
-          required
-        />
+        <div className="input-icon-wrapper">
+          <Globe className="input-icon" size={16} />
+          <input
+            name="destination"
+            value={form.destination}
+            onChange={updateForm}
+            placeholder="Example: Goa, Jaipur, Bengaluru"
+            required
+          />
+        </div>
       </label>
       <div className="two-column">
         <label>
           Check-in
-          <input name="checkIn" type="date" value={form.checkIn} onChange={updateForm} required />
+          <div className="input-icon-wrapper">
+            <Calendar className="input-icon" size={16} />
+            <input name="checkIn" type="date" value={form.checkIn} onChange={updateForm} required />
+          </div>
         </label>
         <label>
           Check-out
-          <input name="checkOut" type="date" value={form.checkOut} onChange={updateForm} required />
+          <div className="input-icon-wrapper">
+            <Calendar className="input-icon" size={16} />
+            <input name="checkOut" type="date" value={form.checkOut} onChange={updateForm} required />
+          </div>
         </label>
       </div>
     </>
@@ -278,28 +313,34 @@ function DummyInputs({ form, updateForm }) {
     <div className="two-column">
       <label>
         Departure City
-        <select name="source" value={form.source} onChange={updateForm} required>
-          <option value="">Select departure</option>
-          <option value="Paris">Paris</option>
-          <option value="Philadelphia">Philadelphia</option>
-          <option value="Boston">Boston</option>
-          <option value="Portland">Portland</option>
-          <option value="San Diego">San Diego</option>
-          <option value="Mexico City">Mexico City</option>
-          <option value="São Paolo">São Paolo</option>
-        </select>
+        <div className="input-icon-wrapper">
+          <MapPin className="input-icon" size={16} />
+          <select name="source" value={form.source} onChange={updateForm} required>
+            <option value="">Select departure</option>
+            <option value="Paris">Paris</option>
+            <option value="Philadelphia">Philadelphia</option>
+            <option value="Boston">Boston</option>
+            <option value="Portland">Portland</option>
+            <option value="San Diego">San Diego</option>
+            <option value="Mexico City">Mexico City</option>
+            <option value="São Paolo">São Paolo</option>
+          </select>
+        </div>
       </label>
       <label>
         Destination City
-        <select name="destination" value={form.destination} onChange={updateForm} required>
-          <option value="">Select destination</option>
-          <option value="Rome">Rome</option>
-          <option value="London">London</option>
-          <option value="Berlin">Berlin</option>
-          <option value="New York">New York</option>
-          <option value="Dublin">Dublin</option>
-          <option value="Cairo">Cairo</option>
-        </select>
+        <div className="input-icon-wrapper">
+          <MapPin className="input-icon" size={16} />
+          <select name="destination" value={form.destination} onChange={updateForm} required>
+            <option value="">Select destination</option>
+            <option value="Rome">Rome</option>
+            <option value="London">London</option>
+            <option value="Berlin">Berlin</option>
+            <option value="New York">New York</option>
+            <option value="Dublin">Dublin</option>
+            <option value="Cairo">Cairo</option>
+          </select>
+        </div>
       </label>
     </div>
   );
@@ -310,25 +351,31 @@ function ShadcnInputs({ form, updateForm }) {
     <>
       <label>
         Name / Username
-        <input
-          name="source"
-          value={form.source}
-          onChange={updateForm}
-          placeholder="Example: John Doe"
-          required
-        />
+        <div className="input-icon-wrapper">
+          <Users className="input-icon" size={16} />
+          <input
+            name="source"
+            value={form.source}
+            onChange={updateForm}
+            placeholder="Example: John Doe"
+            required
+          />
+        </div>
       </label>
       <label>
         Description / Bio
-        <textarea
-          name="destination"
-          value={form.destination}
-          onChange={updateForm}
-          placeholder="Example: This is a test description filled in by the automation agent."
-          required
-          rows={3}
-          style={{ resize: "none" }}
-        />
+        <div className="input-icon-wrapper textarea-icon-wrapper">
+          <FileText className="input-icon" size={16} />
+          <textarea
+            name="destination"
+            value={form.destination}
+            onChange={updateForm}
+            placeholder="Example: This is a test description filled in by the automation agent."
+            required
+            rows={3}
+            style={{ resize: "none" }}
+          />
+        </div>
       </label>
     </>
   );
@@ -428,14 +475,27 @@ function RunResult({ result }) {
       </section>
 
       <section>
-        <h3>Screenshots</h3>
+        <h3>Automation Screenshots</h3>
         <div className="screenshots">
-          {result.screenshots.map((shot) => (
-            <a key={shot.fileName} href={`${API_BASE_URL}${shot.url}`} target="_blank" rel="noreferrer">
-              <Camera size={16} />
-              {shot.fileName}
-            </a>
-          ))}
+          {result.screenshots.map((shot) => {
+            const label = shot.fileName
+              .split("-")
+              .slice(1)
+              .join(" ")
+              .replace(".png", "")
+              .replace(/_/g, " ");
+            return (
+              <a key={shot.fileName} href={`${API_BASE_URL}${shot.url}`} target="_blank" rel="noreferrer" className="screenshot-card">
+                <div className="screenshot-thumbnail">
+                  <Camera size={22} />
+                </div>
+                <div className="screenshot-info">
+                  <span className="screenshot-label">{label || "screenshot"}</span>
+                  <span className="screenshot-filename">{shot.fileName.substring(13)}</span>
+                </div>
+              </a>
+            );
+          })}
         </div>
       </section>
 
